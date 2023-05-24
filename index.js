@@ -17,7 +17,7 @@ function flipCard() {
   if (this.classList.contains('matched')) return; // Corner case 2: If the user clicks on a card that is already matched, do nothing
   
   if (secondCard) return; // Corner case 3: If the user clicks on a card while two cards are already flipped, do nothing
-  
+
   this.classList.add('flip');
 
   if (!isFlipped) {
@@ -28,8 +28,11 @@ function flipCard() {
     secondCard = this;
 
     checkForMatch();
-    updateGameStats();
   }
+
+  numClicks++; // Increment numClicks for each flip
+
+  updateGameStats();
 }
 
 function checkForMatch() {
@@ -77,7 +80,7 @@ function resetBoard() {
 function updateGameStats() {
   document.getElementById('matches').textContent = numMatches;
   document.getElementById('left').textContent = pairsLeft;
-  document.getElementById('clicks').textContent = ++numClicks;
+  document.getElementById('clicks').textContent = numClicks;
 }
 
 function endGame() {
