@@ -7,7 +7,7 @@ let numClicks = 0;
 let pairsLeft;
 let powerUpActive = false;
 let isGameStarted = false;
-let timerInterval;
+let timerInterval = null; // Initialize timerInterval to null
 
 function flipCard() {
   if (powerUpActive || !isGameStarted) return; // Prevent flipping cards during power-up or before the game starts
@@ -107,7 +107,7 @@ function fetchRandomPokemon(difficulty) {
   } else {
     // Default to easy mode if no difficulty is provided
     gridRows = 2;
-    gridColumns = 3;
+    gridColumns = 6;
     totalPairs = 3;
   }
 
@@ -169,7 +169,7 @@ function generateGameGrid(difficulty) {
   } else {
     // Default to easy mode if no difficulty is provided
     gridRows = 2;
-    gridColumns = 3;
+    gridColumns = 6;
     totalPairs = 3;
   }
 
@@ -203,7 +203,10 @@ function generateGameGrid(difficulty) {
       gameGrid.appendChild(card);
     });
 
-    startGame(); // Start the game after generating the grid
+    // // Start the game only if it hasn't already started
+    // if (!isGameStarted) {
+    //   startGame();
+    // }
   });
 }
 
@@ -220,6 +223,10 @@ function handleDifficultySelection() {
 
 // Function to start the game
 function startGame() {
+  if (timerInterval) {
+    clearInterval(timerInterval); // Clear any existing timer interval
+  }
+
   numMatches = 0;
   numClicks = 0;
   isGameStarted = true;
@@ -230,6 +237,7 @@ function startGame() {
 
   updateTimerDisplay(timeLeft); // Display initial time
 
+  // Update the timer interval
   timerInterval = setInterval(() => {
     timeLeft--;
 
@@ -271,15 +279,15 @@ function getTimeLimit() {
   }
 }
 
-// Call the handleDifficultySelection function when the page loads
-document.addEventListener('DOMContentLoaded', handleDifficultySelection);
-
-// Call the generateGameGrid function with the desired difficulty level when the page loads
 document.addEventListener('DOMContentLoaded', () => {
+  // Add event listener for start button click
+  const startButton = document.getElementById('start');
+  startButton.addEventListener('click', handleStartButtonClick);
+
+  // Call the handleDifficultySelection function when the page loads
+  handleDifficultySelection();
+
+  // Call the generateGameGrid function with the desired difficulty level when the page loads
   const difficulty = 'easy'; // Change the difficulty level here ('easy', 'medium', or 'hard')
   generateGameGrid(difficulty);
 });
-
-// Add event listener for start button click
-const startButton = document.getElementById('start');
-startButton.addEventListener('click', handleStartButtonClick);
