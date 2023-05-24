@@ -15,7 +15,17 @@
   <!-- import Bootstrap css and js-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+    body.dark-theme {
+      background-color: black;
+      color: white;
+    }
 
+    body.light-theme {
+      background-color: white;
+      color: black;
+    }
+  </style>
 </head>
 
 <body>
@@ -47,10 +57,25 @@
   </div>
 
   <section id="themes" class="text-center">
-    <button id="dark" class="btn btn-dark"> Dark </button>
-    <button id="light" class="btn btn-light"> light </button>
+    <button id="dark" class="btn btn-dark">Dark</button>
+    <button id="light" class="btn btn-light">Light</button>
   </section>
 
+  <script>
+    const darkButton = document.getElementById('dark');
+    const lightButton = document.getElementById('light');
+    const body = document.body;
+
+    darkButton.addEventListener('click', () => {
+      body.classList.add('dark-theme');
+      body.classList.remove('light-theme');
+    });
+
+    lightButton.addEventListener('click', () => {
+      body.classList.add('light-theme');
+      body.classList.remove('dark-theme');
+    });
+  </script>
 </body>
 
 </html>

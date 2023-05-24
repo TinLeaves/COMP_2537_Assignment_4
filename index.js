@@ -175,9 +175,6 @@ function generateGameGrid(difficulty) {
   fetchRandomPokemon(difficulty).then(pokemons => {
     const gridSizeClass = `grid-${totalCards}`;
 
-    // Remove existing grid size classes
-    gameGrid.classList.remove('grid-6', 'grid-12', 'grid-18', 'grid-24');
-
     gameGrid.classList.add(gridSizeClass);
     pairsLeft = totalCards / 2;
 

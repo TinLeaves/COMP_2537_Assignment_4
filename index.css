@@ -9,8 +9,8 @@ header {
 
 #game_grid {
   border: 2px solid tomato;
-  width: 600px;
-  height: 400px;
+  width: 1000px;
+  height: 800px;
   margin: 0 auto 10px;
   display: flex;
   flex-wrap: wrap;
