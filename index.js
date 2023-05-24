@@ -73,7 +73,9 @@
 
   function endGame() {
     clearInterval(timerInterval);
-    alert('Congratulations! You have completed the game!');
+    setTimeout(() => {
+      alert('Congratulations! You have completed the game!');
+    }, 500);
   }
 
   function fetchRandomPokemon(difficulty) {
