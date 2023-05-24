@@ -5,7 +5,6 @@ let firstCard, secondCard;
 let numMatches = 0;
 let numClicks = 0;
 let pairsLeft;
-let timerInterval;
 let powerUpActive = false;
 let isGameStarted = false;
 
@@ -96,19 +95,23 @@ function fetchRandomPokemon(difficulty) {
     gridRows = 2;
     gridColumns = 3;
     totalPairs = 3;
+    timeLimit = 100;
   } else if (difficulty === 'medium') {
     gridRows = 3;
     gridColumns = 4;
     totalPairs = 6;
+    timeLimit = 200;
   } else if (difficulty === 'hard') {
     gridRows = 4;
     gridColumns = 6;
     totalPairs = 12;
+    timeLimit = 300;
   } else {
     // Default to easy mode if no difficulty is provided
     gridRows = 2;
     gridColumns = 3;
     totalPairs = 3;
+    timeLimit = 100;
   }
 
   const totalCards = gridRows * gridColumns;
@@ -158,19 +161,23 @@ function generateGameGrid(difficulty) {
     gridRows = 2;
     gridColumns = 3;
     totalPairs = 3;
+    timeLimit = 100;
   } else if (difficulty === 'medium') {
     gridRows = 3;
     gridColumns = 4;
     totalPairs = 6;
+    timeLimit = 200;
   } else if (difficulty === 'hard') {
     gridRows = 4;
     gridColumns = 6;
     totalPairs = 12;
+    timeLimit = 300;
   } else {
     // Default to easy mode if no difficulty is provided
     gridRows = 2;
     gridColumns = 3;
     totalPairs = 3;
+    timeLimit = 100;
   }
 
   const totalCards = gridRows * gridColumns;
@@ -225,36 +232,6 @@ function startGame() {
   isGameStarted = true;
   resetTimer();
   updateGameStats();
-}
-
-// Function to reset the timer
-function resetTimer() {
-  clearInterval(timerInterval);
-  const timerElement = document.getElementById('timer');
-  timerElement.textContent = '00:00';
-}
-
-// Function to update the timer
-function updateTimer() {
-  const timerElement = document.getElementById('timer');
-  let seconds = 0;
-  timerInterval = setInterval(() => {
-    seconds++;
-    const minutes = Math.floor(seconds / 60);
-    const formattedSeconds = seconds % 60;
-    timerElement.textContent = `${formatTime(minutes)}:${formatTime(formattedSeconds)}`;
-  }, 1000);
-}
-
-// Function to format time values (prepend 0 if less than 10)
-function formatTime(time) {
-  return time < 10 ? `0${time}` : time;
-}
-
-// Function to handle reset button click
-function handleResetButtonClick() {
-  generateGameGrid();
-  resetTimer();
 }
 
 // Function to handle start button click
