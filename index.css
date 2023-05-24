@@ -44,6 +44,7 @@ header {
   position: absolute;
   backface-visibility: hidden;
   transform-style: preserve-3d;
+  object-fit: contain;
 }
 
 .pokeCard .card-back {
@@ -57,7 +58,7 @@ header {
 .pokeCard .card-front img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .pokeCard .card-back img {
