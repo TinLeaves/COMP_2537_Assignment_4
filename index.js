@@ -230,14 +230,12 @@ function startGame() {
   numMatches = 0;
   numClicks = 0;
   isGameStarted = true;
-  resetTimer();
   updateGameStats();
 }
 
 // Function to handle start button click
 function handleStartButtonClick() {
   startGame();
-  updateTimer();
 }
 
 // Call the handleDifficultySelection function when the page loads
@@ -249,10 +247,6 @@ document.addEventListener('DOMContentLoaded', () => {
   generateGameGrid(difficulty);
 });
 
-// Add event listener for reset button click
-const resetButton = document.getElementById('reset_button');
-resetButton.addEventListener('click', handleResetButtonClick);
-
 // Add event listener for start button click
-const startButton = document.getElementById('start_button');
+const startButton = document.getElementById('start');
 startButton.addEventListener('click', handleStartButtonClick);
