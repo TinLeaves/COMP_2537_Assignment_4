@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poke Card Game</title>
+  <link rel="stylesheet" href="index.css">
+  <!-- import jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="index.js"></script>
+  <!-- popper -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <!-- import Bootstrap css and js-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+  <header>
+    <div id="difficulty" class="btn-group btn-group-toggle m-3" data-toggle="buttons">
+      <label class="btn btn-primary active">
+        <input type="radio" value="easy" name="options" id="option1" autocomplete="off" checked> Easy
+      </label>
+      <label class="btn btn-primary">
+        <input type="radio" value="medium" name="options" id="option2" autocomplete="off"> Medium
+      </label>
+      <label class="btn btn-primary">
+        <input type="radio" value="hard" name="options" id="option3" autocomplete="off"> Hard
+      </label>
+    </div>
+    <br>
+    <a href="./index.html"><button class="btn btn-primary"> Reset</button></a>
+    <button class="btn btn-primary" id="start"> Start!</button>
+    <section id="info">
+      <h1>Total Number of Pairs <span id="total"></span></h1>
+      <h1>Number of Matches <span id="matches"></span></h1>
+      <h1>Number of pair left <span id="left"></span></h1>
+      <h1>Number of Clicks <span id="clicks"></span></h1>
+      <h1>You got <span id="timer"> </span> seconds. <span id="time"></span> second<span id="s">s</span> passed!</h1>
+    </section>
+
+  </header>
+  <div id="game_grid">
+  </div>
+
+  <section id="themes" class="text-center">
+    <button id="dark" class="btn btn-dark"> Dark </button>
+    <button id="light" class="btn btn-light"> light </button>
+  </section>
+
+</body>
+
+</html>

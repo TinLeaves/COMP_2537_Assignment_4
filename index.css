@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+}
+
+header {
+  text-align: center;
+  margin: 20px 0;
+}
+
+#game_grid {
+  border: 2px solid tomato;
+  width: 600px;
+  height: 400px;
+  margin: 0 auto 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.pokeCard {
+  width: calc(33.33% - 10px);
+  position: relative;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.pokeCard .card-inner {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+
+.pokeCard.flip .card-inner {
+  transform: rotateY(180deg);
+}
+
+.pokeCard .card-front,
+.pokeCard .card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.pokeCard .card-back {
+  transform: rotateY(0deg);
+}
+
+.pokeCard .card-front {
+  transform: rotateY(180deg);
+}
+
+.pokeCard .card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pokeCard .card-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
